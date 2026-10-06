@@ -1,0 +1,60 @@
+rules_version = '2';
+
+// TableNext Pro — Firestore security rules.
+//
+// IMPORTANT: the app intentionally does not use Firebase Authentication
+// (staff sign in with username + PIN stored in Firestore). Without
+// request.auth these rules cannot tell *who* is calling, so they:
+//   • restrict access to the collections the app actually uses,
+//   • validate the shape of critical documents (users, businesses),
+//   • block destructive operations (deleting users, businesses, bills).
+//
+// For production, strongly consider enabling Firebase App Check
+// (free; blocks requests that do not come from your genuine app builds).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function validRole(role) {
+      return role in ['owner', 'manager', 'host', 'cashier', 'waiter'];
+    }
+
+    // Staff accounts (global so the business can be resolved at sign-in).
+    match /users/{userId} {
+      allow read: if true;
+      allow create, update: if request.resource.data.businessId is string
+        && request.resource.data.username is string
+        && request.resource.data.username.size() >= 3
+        && request.resource.data.pinHash is string
+        && request.resource.data.pinHash.size() == 64
+        && validRole(request.resource.data.role);
+      allow delete: if false; // deactivate instead
+    }
+
+    match /businesses/{businessId} {
+      allow read: if true;
+      allow create, update: if request.resource.data.name is string
+        && request.resource.data.name.size() > 0;
+      allow delete: if false;
+
+      match /{collection}/{docId} {
+        allow read: if collection in [
+          'customers', 'reservations', 'floors', 'floor_elements',
+          'menu_categories', 'menu_items', 'bills', 'daily_stats', 'counters'
+        ];
+        allow create, update: if collection in [
+          'customers', 'reservations', 'floors', 'floor_elements',
+          'menu_categories', 'menu_items', 'bills', 'daily_stats', 'counters'
+        ];
+        // Financial history is append-only from the app.
+        allow delete: if collection in [
+          'customers', 'reservations', 'floors', 'floor_elements',
+          'menu_categories', 'menu_items'
+        ];
+      }
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

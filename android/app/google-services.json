@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "240925805327",
+    "project_id": "table-next-pro",
+    "storage_bucket": "table-next-pro.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240925805327:android:adf3ed840ed97dd8434c7a",
+        "android_client_info": {
+          "package_name": "com.omarfahim.table_next_pro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-aKgQKODxQQvqo0DZjDz2My6P0x9lbfM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,65 @@
+name: table_next_pro
+description: "TableNext Pro — multi-tenant restaurant reservation, floor plan & billing system."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # Firebase
+  firebase_core: ^4.1.0
+  cloud_firestore: ^6.0.2
+
+  # State management
+  flutter_riverpod: ^3.0.3
+  riverpod_annotation: ^3.0.3
+
+  # Models / codegen annotations
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.9.0
+
+  # Local storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  flutter_secure_storage: ^9.2.4
+
+  # Logging
+  talker_flutter: ^5.0.0
+  talker_riverpod_logger: ^5.0.0
+
+  # Routing & UI
+  go_router: ^16.2.0
+  flutter_animate: ^4.5.2
+  shimmer_animation: ^2.2.2
+  google_fonts: ^6.3.2
+
+  # Platform / utilities
+  connectivity_plus: ^7.0.0
+  url_launcher: ^6.3.2
+  intl: ^0.20.2
+  uuid: ^4.5.1
+  crypto: ^3.0.6
+  collection: ^1.19.1
+
+  # Billing / printing
+  pdf: ^3.11.3
+  printing: ^5.14.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+  build_runner: ^2.7.1
+  freezed: ^3.2.3
+  json_serializable: ^6.11.1
+  riverpod_generator: ^3.0.3
+
+flutter:
+  uses-material-design: true
