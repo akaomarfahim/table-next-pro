@@ -71,12 +71,12 @@ class _HeroPanel extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Positioned(
+          const Positioned(
             right: -80,
             top: -60,
             child: _Blob(size: 320, opacity: 0.10),
           ),
-          Positioned(
+          const Positioned(
             left: -60,
             bottom: -80,
             child: _Blob(size: 280, opacity: 0.08),
@@ -129,10 +129,10 @@ class _HeroPanel extends StatelessWidget {
                     ),
                   ).animate().fadeIn(delay: 150.ms, duration: 500.ms),
                   const SizedBox(height: AppSpacing.xxl),
-                  Wrap(
+                  const Wrap(
                     spacing: AppSpacing.sm,
                     runSpacing: AppSpacing.sm,
-                    children: const [
+                    children: [
                       _FeatureChip(icon: Icons.event_available_rounded, label: 'Reservations'),
                       _FeatureChip(icon: Icons.grid_view_rounded, label: 'Floor plans'),
                       _FeatureChip(icon: Icons.receipt_long_rounded, label: 'Billing'),

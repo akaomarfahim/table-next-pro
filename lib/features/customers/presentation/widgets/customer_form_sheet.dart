@@ -24,40 +24,23 @@ class CustomerFormSheet extends ConsumerStatefulWidget {
     Customer? customer,
     String? initialPhone,
     String? initialName,
-  }) =>
-      showAdaptiveSheet<Customer>(
-        context: context,
-        builder: (_) => CustomerFormSheet(
-          customer: customer,
-          initialPhone: initialPhone,
-          initialName: initialName,
-        ),
-      );
+  }) => showAdaptiveSheet<Customer>(
+    context: context,
+    builder: (_) => CustomerFormSheet(customer: customer, initialPhone: initialPhone, initialName: initialName),
+  );
 
   @override
   ConsumerState<CustomerFormSheet> createState() => _CustomerFormSheetState();
 }
 
 class _CustomerFormSheetState extends ConsumerState<CustomerFormSheet> {
-  static const _presetTags = [
-    'Regular',
-    'Family',
-    'Corporate',
-    'Vegetarian',
-    'Allergy',
-    'Window seat',
-    'Quiet area',
-  ];
+  static const _presetTags = ['Regular', 'Family', 'Corporate', 'Vegetarian', 'Allergy', 'Window seat', 'Quiet area'];
 
   final _formKey = GlobalKey<FormState>();
-  late final TextEditingController _name =
-      TextEditingController(text: widget.customer?.name ?? widget.initialName);
-  late final TextEditingController _phone =
-      TextEditingController(text: widget.customer?.phone ?? widget.initialPhone);
-  late final TextEditingController _email =
-      TextEditingController(text: widget.customer?.email);
-  late final TextEditingController _notes =
-      TextEditingController(text: widget.customer?.notes);
+  late final TextEditingController _name = TextEditingController(text: widget.customer?.name ?? widget.initialName);
+  late final TextEditingController _phone = TextEditingController(text: widget.customer?.phone ?? widget.initialPhone);
+  late final TextEditingController _email = TextEditingController(text: widget.customer?.email);
+  late final TextEditingController _notes = TextEditingController(text: widget.customer?.notes);
   late Set<String> _tags = {...?widget.customer?.tags};
   late bool _vip = widget.customer?.isVip ?? false;
   late DateTime? _birthday = widget.customer?.birthday;
@@ -79,8 +62,7 @@ class _CustomerFormSheetState extends ConsumerState<CustomerFormSheet> {
     setState(() => _saving = true);
     final repo = ref.read(customerRepositoryProvider);
     try {
-      final base = widget.customer ??
-          Customer(id: '', name: '', phone: '');
+      final base = widget.customer ?? const Customer(id: '', name: '', phone: '');
       final draft = base.copyWith(
         name: _name.text.trim(),
         phone: _phone.text.trim(),
@@ -117,10 +99,7 @@ class _CustomerFormSheetState extends ConsumerState<CustomerFormSheet> {
       title: _isEdit ? 'Edit customer' : 'New customer',
       subtitle: 'Phone number is required and must be unique',
       actions: [
-        OutlinedButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Cancel'),
-        ),
+        OutlinedButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Cancel')),
         LoadingButton(label: 'Save customer', loading: _saving, onPressed: _save),
       ],
       body: Form(
@@ -132,10 +111,7 @@ class _CustomerFormSheetState extends ConsumerState<CustomerFormSheet> {
               controller: _phone,
               keyboardType: TextInputType.phone,
               autofocus: !_isEdit && (widget.initialPhone?.isEmpty ?? true),
-              decoration: const InputDecoration(
-                labelText: 'Phone *',
-                prefixIcon: Icon(Icons.call_outlined),
-              ),
+              decoration: const InputDecoration(labelText: 'Phone *', prefixIcon: Icon(Icons.call_outlined)),
               validator: (v) => PhoneUtils.isValid(v ?? '') ? null : 'Enter a valid phone number',
             ),
             gap,
@@ -152,16 +128,11 @@ class _CustomerFormSheetState extends ConsumerState<CustomerFormSheet> {
             TextFormField(
               controller: _email,
               keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                prefixIcon: Icon(Icons.mail_outline_rounded),
-              ),
+              decoration: const InputDecoration(labelText: 'Email', prefixIcon: Icon(Icons.mail_outline_rounded)),
               validator: (v) {
                 final value = v?.trim() ?? '';
                 if (value.isEmpty) return null;
-                return RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(value)
-                    ? null
-                    : 'Invalid email';
+                return RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(value) ? null : 'Invalid email';
               },
             ),
             gap,
@@ -181,9 +152,7 @@ class _CustomerFormSheetState extends ConsumerState<CustomerFormSheet> {
                       if (picked != null) setState(() => _birthday = picked);
                     },
                     icon: const Icon(Icons.cake_outlined),
-                    label: Text(
-                      _birthday == null ? 'Add birthday' : Formatters.dayShort(_birthday!),
-                    ),
+                    label: Text(_birthday == null ? 'Add birthday' : Formatters.dayShort(_birthday!)),
                   ),
                 ),
                 const SizedBox(width: AppSpacing.md),
@@ -237,10 +206,7 @@ class _CustomerFormSheetState extends ConsumerState<CustomerFormSheet> {
               controller: _notes,
               minLines: 2,
               maxLines: 4,
-              decoration: const InputDecoration(
-                labelText: 'Notes (allergies, preferences…)',
-                alignLabelWithHint: true,
-              ),
+              decoration: const InputDecoration(labelText: 'Notes (allergies, preferences…)', alignLabelWithHint: true),
             ),
           ],
         ),

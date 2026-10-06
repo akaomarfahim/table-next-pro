@@ -209,16 +209,10 @@ return $default(_that.items,_that.cursor,_that.hasMore,_that.isLoadingMore,_that
 
 
 class _CustomerListState implements CustomerListState {
-  const _CustomerListState({final  List<Customer> items = const <Customer>[], this.cursor, this.hasMore = false, this.isLoadingMore = false, this.query = ''}): _items = items;
+  const _CustomerListState({this.items = const <Customer>[], this.cursor, this.hasMore = false, this.isLoadingMore = false, this.query = ''});
   
 
- final  List<Customer> _items;
-@override@JsonKey() List<Customer> get items {
-  if (_items is EqualUnmodifiableListView) return _items;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_items);
-}
-
+@override@JsonKey() final  List<Customer> items;
 @override final  Object? cursor;
 @override@JsonKey() final  bool hasMore;
 @override@JsonKey() final  bool isLoadingMore;
@@ -234,12 +228,12 @@ _$CustomerListStateCopyWith<_CustomerListState> get copyWith => __$CustomerListS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomerListState&&const DeepCollectionEquality().equals(other._items, _items)&&const DeepCollectionEquality().equals(other.cursor, cursor)&&(identical(other.hasMore, hasMore) || other.hasMore == hasMore)&&(identical(other.isLoadingMore, isLoadingMore) || other.isLoadingMore == isLoadingMore)&&(identical(other.query, query) || other.query == query));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomerListState&&const DeepCollectionEquality().equals(other.items, items)&&const DeepCollectionEquality().equals(other.cursor, cursor)&&(identical(other.hasMore, hasMore) || other.hasMore == hasMore)&&(identical(other.isLoadingMore, isLoadingMore) || other.isLoadingMore == isLoadingMore)&&(identical(other.query, query) || other.query == query));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_items),const DeepCollectionEquality().hash(cursor),hasMore,isLoadingMore,query);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(items),const DeepCollectionEquality().hash(cursor),hasMore,isLoadingMore,query);
 
 @override
 String toString() {
@@ -273,7 +267,7 @@ class __$CustomerListStateCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? items = null,Object? cursor = freezed,Object? hasMore = null,Object? isLoadingMore = null,Object? query = null,}) {
   return _then(_CustomerListState(
-items: null == items ? _self._items : items // ignore: cast_nullable_to_non_nullable
+items: null == items ? _self.items : items // ignore: cast_nullable_to_non_nullable
 as List<Customer>,cursor: freezed == cursor ? _self.cursor : cursor ,hasMore: null == hasMore ? _self.hasMore : hasMore // ignore: cast_nullable_to_non_nullable
 as bool,isLoadingMore: null == isLoadingMore ? _self.isLoadingMore : isLoadingMore // ignore: cast_nullable_to_non_nullable
 as bool,query: null == query ? _self.query : query // ignore: cast_nullable_to_non_nullable

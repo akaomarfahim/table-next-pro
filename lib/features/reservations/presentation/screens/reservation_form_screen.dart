@@ -88,7 +88,7 @@ class _ReservationFormScreenState extends ConsumerState<ReservationFormScreen> {
     _date = DateUtilsX.startOfDay(base);
     final hasTime = initial != null && (initial.hour != 0 || initial.minute != 0);
     final rounded = DateUtilsX.roundUp(
-      hasTime ? initial! : (DateUtilsX.isSameDay(base, now) ? now : DateTime(base.year, base.month, base.day, 19)),
+      hasTime ? initial : (DateUtilsX.isSameDay(base, now) ? now : DateTime(base.year, base.month, base.day, 19)),
     );
     _time = TimeOfDay(hour: rounded.hour, minute: rounded.minute);
     if (widget.initialTableId != null) _tableIds = {widget.initialTableId!};

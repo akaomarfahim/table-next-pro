@@ -27,7 +27,7 @@ dependencies:
   # Local storage
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  flutter_secure_storage: ^9.2.4
+  flutter_secure_storage_plus: ^0.1.0
 
   # Logging
   talker_flutter: ^5.0.0
@@ -40,7 +40,7 @@ dependencies:
   google_fonts: ^6.3.2
 
   # Platform / utilities
-  connectivity_plus: ^7.0.0
+  # connectivity_plus: ^7.0.0
   url_launcher: ^6.3.2
   intl: ^0.20.2
   uuid: ^4.5.1

@@ -792,39 +792,21 @@ return $default(_that.id,_that.billNumber,_that.status,_that.orderType,_that.tab
 @JsonSerializable()
 
 class _BillModel extends BillModel {
-  const _BillModel({@JsonKey(includeToJson: false) this.id = '', this.billNumber = '', @JsonKey(unknownEnumValue: BillStatus.open) this.status = BillStatus.open, @JsonKey(unknownEnumValue: OrderType.dineIn) this.orderType = OrderType.dineIn, final  List<String> tableIds = const <String>[], final  List<String> tableLabels = const <String>[], this.reservationId, this.customerId, this.customerName = '', this.customerPhone = '', this.guests = 1, final  List<BillItemModel> items = const <BillItemModel>[], @JsonKey(unknownEnumValue: DiscountType.none) this.discountType = DiscountType.none, this.discountValue = 0.0, this.taxRate = 0.0, this.serviceChargeRate = 0.0, this.subtotal = 0.0, this.discountAmount = 0.0, this.serviceCharge = 0.0, this.tax = 0.0, this.total = 0.0, final  List<PaymentModel> payments = const <PaymentModel>[], this.notes = '', this.openedById = '', this.openedByName = '', this.closedById, this.closedByName, this.voidReason = '', @NullableTimestampConverter() this.closedAt, @NullableTimestampConverter() this.createdAt, @NullableTimestampConverter() this.updatedAt}): _tableIds = tableIds,_tableLabels = tableLabels,_items = items,_payments = payments,super._();
+  const _BillModel({@JsonKey(includeToJson: false) this.id = '', this.billNumber = '', @JsonKey(unknownEnumValue: BillStatus.open) this.status = BillStatus.open, @JsonKey(unknownEnumValue: OrderType.dineIn) this.orderType = OrderType.dineIn, this.tableIds = const <String>[], this.tableLabels = const <String>[], this.reservationId, this.customerId, this.customerName = '', this.customerPhone = '', this.guests = 1, this.items = const <BillItemModel>[], @JsonKey(unknownEnumValue: DiscountType.none) this.discountType = DiscountType.none, this.discountValue = 0.0, this.taxRate = 0.0, this.serviceChargeRate = 0.0, this.subtotal = 0.0, this.discountAmount = 0.0, this.serviceCharge = 0.0, this.tax = 0.0, this.total = 0.0, this.payments = const <PaymentModel>[], this.notes = '', this.openedById = '', this.openedByName = '', this.closedById, this.closedByName, this.voidReason = '', @NullableTimestampConverter() this.closedAt, @NullableTimestampConverter() this.createdAt, @NullableTimestampConverter() this.updatedAt}): super._();
   factory _BillModel.fromJson(Map<String, dynamic> json) => _$BillModelFromJson(json);
 
 @override@JsonKey(includeToJson: false) final  String id;
 @override@JsonKey() final  String billNumber;
 @override@JsonKey(unknownEnumValue: BillStatus.open) final  BillStatus status;
 @override@JsonKey(unknownEnumValue: OrderType.dineIn) final  OrderType orderType;
- final  List<String> _tableIds;
-@override@JsonKey() List<String> get tableIds {
-  if (_tableIds is EqualUnmodifiableListView) return _tableIds;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_tableIds);
-}
-
- final  List<String> _tableLabels;
-@override@JsonKey() List<String> get tableLabels {
-  if (_tableLabels is EqualUnmodifiableListView) return _tableLabels;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_tableLabels);
-}
-
+@override@JsonKey() final  List<String> tableIds;
+@override@JsonKey() final  List<String> tableLabels;
 @override final  String? reservationId;
 @override final  String? customerId;
 @override@JsonKey() final  String customerName;
 @override@JsonKey() final  String customerPhone;
 @override@JsonKey() final  int guests;
- final  List<BillItemModel> _items;
-@override@JsonKey() List<BillItemModel> get items {
-  if (_items is EqualUnmodifiableListView) return _items;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_items);
-}
-
+@override@JsonKey() final  List<BillItemModel> items;
 @override@JsonKey(unknownEnumValue: DiscountType.none) final  DiscountType discountType;
 @override@JsonKey() final  double discountValue;
 @override@JsonKey() final  double taxRate;
@@ -834,13 +816,7 @@ class _BillModel extends BillModel {
 @override@JsonKey() final  double serviceCharge;
 @override@JsonKey() final  double tax;
 @override@JsonKey() final  double total;
- final  List<PaymentModel> _payments;
-@override@JsonKey() List<PaymentModel> get payments {
-  if (_payments is EqualUnmodifiableListView) return _payments;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_payments);
-}
-
+@override@JsonKey() final  List<PaymentModel> payments;
 @override@JsonKey() final  String notes;
 @override@JsonKey() final  String openedById;
 @override@JsonKey() final  String openedByName;
@@ -864,12 +840,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BillModel&&(identical(other.id, id) || other.id == id)&&(identical(other.billNumber, billNumber) || other.billNumber == billNumber)&&(identical(other.status, status) || other.status == status)&&(identical(other.orderType, orderType) || other.orderType == orderType)&&const DeepCollectionEquality().equals(other._tableIds, _tableIds)&&const DeepCollectionEquality().equals(other._tableLabels, _tableLabels)&&(identical(other.reservationId, reservationId) || other.reservationId == reservationId)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.customerName, customerName) || other.customerName == customerName)&&(identical(other.customerPhone, customerPhone) || other.customerPhone == customerPhone)&&(identical(other.guests, guests) || other.guests == guests)&&const DeepCollectionEquality().equals(other._items, _items)&&(identical(other.discountType, discountType) || other.discountType == discountType)&&(identical(other.discountValue, discountValue) || other.discountValue == discountValue)&&(identical(other.taxRate, taxRate) || other.taxRate == taxRate)&&(identical(other.serviceChargeRate, serviceChargeRate) || other.serviceChargeRate == serviceChargeRate)&&(identical(other.subtotal, subtotal) || other.subtotal == subtotal)&&(identical(other.discountAmount, discountAmount) || other.discountAmount == discountAmount)&&(identical(other.serviceCharge, serviceCharge) || other.serviceCharge == serviceCharge)&&(identical(other.tax, tax) || other.tax == tax)&&(identical(other.total, total) || other.total == total)&&const DeepCollectionEquality().equals(other._payments, _payments)&&(identical(other.notes, notes) || other.notes == notes)&&(identical(other.openedById, openedById) || other.openedById == openedById)&&(identical(other.openedByName, openedByName) || other.openedByName == openedByName)&&(identical(other.closedById, closedById) || other.closedById == closedById)&&(identical(other.closedByName, closedByName) || other.closedByName == closedByName)&&(identical(other.voidReason, voidReason) || other.voidReason == voidReason)&&(identical(other.closedAt, closedAt) || other.closedAt == closedAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BillModel&&(identical(other.id, id) || other.id == id)&&(identical(other.billNumber, billNumber) || other.billNumber == billNumber)&&(identical(other.status, status) || other.status == status)&&(identical(other.orderType, orderType) || other.orderType == orderType)&&const DeepCollectionEquality().equals(other.tableIds, tableIds)&&const DeepCollectionEquality().equals(other.tableLabels, tableLabels)&&(identical(other.reservationId, reservationId) || other.reservationId == reservationId)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.customerName, customerName) || other.customerName == customerName)&&(identical(other.customerPhone, customerPhone) || other.customerPhone == customerPhone)&&(identical(other.guests, guests) || other.guests == guests)&&const DeepCollectionEquality().equals(other.items, items)&&(identical(other.discountType, discountType) || other.discountType == discountType)&&(identical(other.discountValue, discountValue) || other.discountValue == discountValue)&&(identical(other.taxRate, taxRate) || other.taxRate == taxRate)&&(identical(other.serviceChargeRate, serviceChargeRate) || other.serviceChargeRate == serviceChargeRate)&&(identical(other.subtotal, subtotal) || other.subtotal == subtotal)&&(identical(other.discountAmount, discountAmount) || other.discountAmount == discountAmount)&&(identical(other.serviceCharge, serviceCharge) || other.serviceCharge == serviceCharge)&&(identical(other.tax, tax) || other.tax == tax)&&(identical(other.total, total) || other.total == total)&&const DeepCollectionEquality().equals(other.payments, payments)&&(identical(other.notes, notes) || other.notes == notes)&&(identical(other.openedById, openedById) || other.openedById == openedById)&&(identical(other.openedByName, openedByName) || other.openedByName == openedByName)&&(identical(other.closedById, closedById) || other.closedById == closedById)&&(identical(other.closedByName, closedByName) || other.closedByName == closedByName)&&(identical(other.voidReason, voidReason) || other.voidReason == voidReason)&&(identical(other.closedAt, closedAt) || other.closedAt == closedAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,id,billNumber,status,orderType,const DeepCollectionEquality().hash(_tableIds),const DeepCollectionEquality().hash(_tableLabels),reservationId,customerId,customerName,customerPhone,guests,const DeepCollectionEquality().hash(_items),discountType,discountValue,taxRate,serviceChargeRate,subtotal,discountAmount,serviceCharge,tax,total,const DeepCollectionEquality().hash(_payments),notes,openedById,openedByName,closedById,closedByName,voidReason,closedAt,createdAt,updatedAt]);
+int get hashCode => Object.hashAll([runtimeType,id,billNumber,status,orderType,const DeepCollectionEquality().hash(tableIds),const DeepCollectionEquality().hash(tableLabels),reservationId,customerId,customerName,customerPhone,guests,const DeepCollectionEquality().hash(items),discountType,discountValue,taxRate,serviceChargeRate,subtotal,discountAmount,serviceCharge,tax,total,const DeepCollectionEquality().hash(payments),notes,openedById,openedByName,closedById,closedByName,voidReason,closedAt,createdAt,updatedAt]);
 
 @override
 String toString() {
@@ -907,14 +883,14 @@ id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,billNumber: null == billNumber ? _self.billNumber : billNumber // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as BillStatus,orderType: null == orderType ? _self.orderType : orderType // ignore: cast_nullable_to_non_nullable
-as OrderType,tableIds: null == tableIds ? _self._tableIds : tableIds // ignore: cast_nullable_to_non_nullable
-as List<String>,tableLabels: null == tableLabels ? _self._tableLabels : tableLabels // ignore: cast_nullable_to_non_nullable
+as OrderType,tableIds: null == tableIds ? _self.tableIds : tableIds // ignore: cast_nullable_to_non_nullable
+as List<String>,tableLabels: null == tableLabels ? _self.tableLabels : tableLabels // ignore: cast_nullable_to_non_nullable
 as List<String>,reservationId: freezed == reservationId ? _self.reservationId : reservationId // ignore: cast_nullable_to_non_nullable
 as String?,customerId: freezed == customerId ? _self.customerId : customerId // ignore: cast_nullable_to_non_nullable
 as String?,customerName: null == customerName ? _self.customerName : customerName // ignore: cast_nullable_to_non_nullable
 as String,customerPhone: null == customerPhone ? _self.customerPhone : customerPhone // ignore: cast_nullable_to_non_nullable
 as String,guests: null == guests ? _self.guests : guests // ignore: cast_nullable_to_non_nullable
-as int,items: null == items ? _self._items : items // ignore: cast_nullable_to_non_nullable
+as int,items: null == items ? _self.items : items // ignore: cast_nullable_to_non_nullable
 as List<BillItemModel>,discountType: null == discountType ? _self.discountType : discountType // ignore: cast_nullable_to_non_nullable
 as DiscountType,discountValue: null == discountValue ? _self.discountValue : discountValue // ignore: cast_nullable_to_non_nullable
 as double,taxRate: null == taxRate ? _self.taxRate : taxRate // ignore: cast_nullable_to_non_nullable
@@ -924,7 +900,7 @@ as double,discountAmount: null == discountAmount ? _self.discountAmount : discou
 as double,serviceCharge: null == serviceCharge ? _self.serviceCharge : serviceCharge // ignore: cast_nullable_to_non_nullable
 as double,tax: null == tax ? _self.tax : tax // ignore: cast_nullable_to_non_nullable
 as double,total: null == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
-as double,payments: null == payments ? _self._payments : payments // ignore: cast_nullable_to_non_nullable
+as double,payments: null == payments ? _self.payments : payments // ignore: cast_nullable_to_non_nullable
 as List<PaymentModel>,notes: null == notes ? _self.notes : notes // ignore: cast_nullable_to_non_nullable
 as String,openedById: null == openedById ? _self.openedById : openedById // ignore: cast_nullable_to_non_nullable
 as String,openedByName: null == openedByName ? _self.openedByName : openedByName // ignore: cast_nullable_to_non_nullable

@@ -4,9 +4,8 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   cloud_firestore
-  connectivity_plus
   firebase_core
-  flutter_secure_storage_windows
+  flutter_secure_storage_plus
   printing
   share_plus
   url_launcher_windows

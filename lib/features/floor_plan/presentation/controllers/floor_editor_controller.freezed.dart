@@ -226,43 +226,18 @@ return $default(_that.floor,_that.elements,_that.selectedId,_that.deletedIds,_th
 
 
 class _FloorEditorState extends FloorEditorState {
-  const _FloorEditorState({this.floor, final  List<FloorElement> elements = const <FloorElement>[], this.selectedId, final  Set<String> deletedIds = const <String>{}, final  Set<String> persistedIds = const <String>{}, this.dirty = false, this.saving = false, final  List<List<FloorElement>> undoStack = const <List<FloorElement>>[]}): _elements = elements,_deletedIds = deletedIds,_persistedIds = persistedIds,_undoStack = undoStack,super._();
+  const _FloorEditorState({this.floor, this.elements = const <FloorElement>[], this.selectedId, this.deletedIds = const <String>{}, this.persistedIds = const <String>{}, this.dirty = false, this.saving = false, this.undoStack = const <List<FloorElement>>[]}): super._();
   
 
 @override final  FloorArea? floor;
- final  List<FloorElement> _elements;
-@override@JsonKey() List<FloorElement> get elements {
-  if (_elements is EqualUnmodifiableListView) return _elements;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_elements);
-}
-
+@override@JsonKey() final  List<FloorElement> elements;
 @override final  String? selectedId;
- final  Set<String> _deletedIds;
-@override@JsonKey() Set<String> get deletedIds {
-  if (_deletedIds is EqualUnmodifiableSetView) return _deletedIds;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableSetView(_deletedIds);
-}
-
+@override@JsonKey() final  Set<String> deletedIds;
 /// Ids that exist in Firestore (deleting them must be persisted).
- final  Set<String> _persistedIds;
-/// Ids that exist in Firestore (deleting them must be persisted).
-@override@JsonKey() Set<String> get persistedIds {
-  if (_persistedIds is EqualUnmodifiableSetView) return _persistedIds;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableSetView(_persistedIds);
-}
-
+@override@JsonKey() final  Set<String> persistedIds;
 @override@JsonKey() final  bool dirty;
 @override@JsonKey() final  bool saving;
- final  List<List<FloorElement>> _undoStack;
-@override@JsonKey() List<List<FloorElement>> get undoStack {
-  if (_undoStack is EqualUnmodifiableListView) return _undoStack;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_undoStack);
-}
-
+@override@JsonKey() final  List<List<FloorElement>> undoStack;
 
 /// Create a copy of FloorEditorState
 /// with the given fields replaced by the non-null parameter values.
@@ -274,12 +249,12 @@ _$FloorEditorStateCopyWith<_FloorEditorState> get copyWith => __$FloorEditorStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FloorEditorState&&(identical(other.floor, floor) || other.floor == floor)&&const DeepCollectionEquality().equals(other._elements, _elements)&&(identical(other.selectedId, selectedId) || other.selectedId == selectedId)&&const DeepCollectionEquality().equals(other._deletedIds, _deletedIds)&&const DeepCollectionEquality().equals(other._persistedIds, _persistedIds)&&(identical(other.dirty, dirty) || other.dirty == dirty)&&(identical(other.saving, saving) || other.saving == saving)&&const DeepCollectionEquality().equals(other._undoStack, _undoStack));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FloorEditorState&&(identical(other.floor, floor) || other.floor == floor)&&const DeepCollectionEquality().equals(other.elements, elements)&&(identical(other.selectedId, selectedId) || other.selectedId == selectedId)&&const DeepCollectionEquality().equals(other.deletedIds, deletedIds)&&const DeepCollectionEquality().equals(other.persistedIds, persistedIds)&&(identical(other.dirty, dirty) || other.dirty == dirty)&&(identical(other.saving, saving) || other.saving == saving)&&const DeepCollectionEquality().equals(other.undoStack, undoStack));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,floor,const DeepCollectionEquality().hash(_elements),selectedId,const DeepCollectionEquality().hash(_deletedIds),const DeepCollectionEquality().hash(_persistedIds),dirty,saving,const DeepCollectionEquality().hash(_undoStack));
+int get hashCode => Object.hash(runtimeType,floor,const DeepCollectionEquality().hash(elements),selectedId,const DeepCollectionEquality().hash(deletedIds),const DeepCollectionEquality().hash(persistedIds),dirty,saving,const DeepCollectionEquality().hash(undoStack));
 
 @override
 String toString() {
@@ -314,13 +289,13 @@ class __$FloorEditorStateCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? floor = freezed,Object? elements = null,Object? selectedId = freezed,Object? deletedIds = null,Object? persistedIds = null,Object? dirty = null,Object? saving = null,Object? undoStack = null,}) {
   return _then(_FloorEditorState(
 floor: freezed == floor ? _self.floor : floor // ignore: cast_nullable_to_non_nullable
-as FloorArea?,elements: null == elements ? _self._elements : elements // ignore: cast_nullable_to_non_nullable
+as FloorArea?,elements: null == elements ? _self.elements : elements // ignore: cast_nullable_to_non_nullable
 as List<FloorElement>,selectedId: freezed == selectedId ? _self.selectedId : selectedId // ignore: cast_nullable_to_non_nullable
-as String?,deletedIds: null == deletedIds ? _self._deletedIds : deletedIds // ignore: cast_nullable_to_non_nullable
-as Set<String>,persistedIds: null == persistedIds ? _self._persistedIds : persistedIds // ignore: cast_nullable_to_non_nullable
+as String?,deletedIds: null == deletedIds ? _self.deletedIds : deletedIds // ignore: cast_nullable_to_non_nullable
+as Set<String>,persistedIds: null == persistedIds ? _self.persistedIds : persistedIds // ignore: cast_nullable_to_non_nullable
 as Set<String>,dirty: null == dirty ? _self.dirty : dirty // ignore: cast_nullable_to_non_nullable
 as bool,saving: null == saving ? _self.saving : saving // ignore: cast_nullable_to_non_nullable
-as bool,undoStack: null == undoStack ? _self._undoStack : undoStack // ignore: cast_nullable_to_non_nullable
+as bool,undoStack: null == undoStack ? _self.undoStack : undoStack // ignore: cast_nullable_to_non_nullable
 as List<List<FloorElement>>,
   ));
 }

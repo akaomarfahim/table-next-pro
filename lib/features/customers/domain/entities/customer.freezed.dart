@@ -220,7 +220,7 @@ return $default(_that.id,_that.name,_that.phone,_that.email,_that.notes,_that.ta
 
 
 class _Customer extends Customer {
-  const _Customer({required this.id, required this.name, required this.phone, this.email = '', this.notes = '', final  List<String> tags = const <String>[], this.isVip = false, this.birthday, this.visitCount = 0, this.reservationCount = 0, this.noShowCount = 0, this.totalSpent = 0.0, this.lastVisitAt, this.createdAt, this.updatedAt}): _tags = tags,super._();
+  const _Customer({required this.id, required this.name, required this.phone, this.email = '', this.notes = '', this.tags = const <String>[], this.isVip = false, this.birthday, this.visitCount = 0, this.reservationCount = 0, this.noShowCount = 0, this.totalSpent = 0.0, this.lastVisitAt, this.createdAt, this.updatedAt}): super._();
   
 
 @override final  String id;
@@ -228,13 +228,7 @@ class _Customer extends Customer {
 @override final  String phone;
 @override@JsonKey() final  String email;
 @override@JsonKey() final  String notes;
- final  List<String> _tags;
-@override@JsonKey() List<String> get tags {
-  if (_tags is EqualUnmodifiableListView) return _tags;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_tags);
-}
-
+@override@JsonKey() final  List<String> tags;
 @override@JsonKey() final  bool isVip;
 @override final  DateTime? birthday;
 @override@JsonKey() final  int visitCount;
@@ -255,12 +249,12 @@ _$CustomerCopyWith<_Customer> get copyWith => __$CustomerCopyWithImpl<_Customer>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Customer&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.email, email) || other.email == email)&&(identical(other.notes, notes) || other.notes == notes)&&const DeepCollectionEquality().equals(other._tags, _tags)&&(identical(other.isVip, isVip) || other.isVip == isVip)&&(identical(other.birthday, birthday) || other.birthday == birthday)&&(identical(other.visitCount, visitCount) || other.visitCount == visitCount)&&(identical(other.reservationCount, reservationCount) || other.reservationCount == reservationCount)&&(identical(other.noShowCount, noShowCount) || other.noShowCount == noShowCount)&&(identical(other.totalSpent, totalSpent) || other.totalSpent == totalSpent)&&(identical(other.lastVisitAt, lastVisitAt) || other.lastVisitAt == lastVisitAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Customer&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.email, email) || other.email == email)&&(identical(other.notes, notes) || other.notes == notes)&&const DeepCollectionEquality().equals(other.tags, tags)&&(identical(other.isVip, isVip) || other.isVip == isVip)&&(identical(other.birthday, birthday) || other.birthday == birthday)&&(identical(other.visitCount, visitCount) || other.visitCount == visitCount)&&(identical(other.reservationCount, reservationCount) || other.reservationCount == reservationCount)&&(identical(other.noShowCount, noShowCount) || other.noShowCount == noShowCount)&&(identical(other.totalSpent, totalSpent) || other.totalSpent == totalSpent)&&(identical(other.lastVisitAt, lastVisitAt) || other.lastVisitAt == lastVisitAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,phone,email,notes,const DeepCollectionEquality().hash(_tags),isVip,birthday,visitCount,reservationCount,noShowCount,totalSpent,lastVisitAt,createdAt,updatedAt);
+int get hashCode => Object.hash(runtimeType,id,name,phone,email,notes,const DeepCollectionEquality().hash(tags),isVip,birthday,visitCount,reservationCount,noShowCount,totalSpent,lastVisitAt,createdAt,updatedAt);
 
 @override
 String toString() {
@@ -299,7 +293,7 @@ as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non
 as String,phone: null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,notes: null == notes ? _self.notes : notes // ignore: cast_nullable_to_non_nullable
-as String,tags: null == tags ? _self._tags : tags // ignore: cast_nullable_to_non_nullable
+as String,tags: null == tags ? _self.tags : tags // ignore: cast_nullable_to_non_nullable
 as List<String>,isVip: null == isVip ? _self.isVip : isVip // ignore: cast_nullable_to_non_nullable
 as bool,birthday: freezed == birthday ? _self.birthday : birthday // ignore: cast_nullable_to_non_nullable
 as DateTime?,visitCount: null == visitCount ? _self.visitCount : visitCount // ignore: cast_nullable_to_non_nullable

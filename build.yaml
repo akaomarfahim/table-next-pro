@@ -9,3 +9,9 @@ targets:
           explicit_to_json: true
           include_if_null: true
           checked: false
+      freezed:
+        options:
+          # Dart 3.13 rejects the `final` modifier freezed adds to collection
+          # parameters when it wraps them in unmodifiable views. Entities are
+          # only ever copied (copyWith), never mutated, so plain lists are safe.
+          make_collections_unmodifiable: false

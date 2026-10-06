@@ -156,7 +156,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
         builder: (context, c) {
           final cols = adaptiveColumns(c.maxWidth, minTileWidth: 260, maxColumns: 4);
           return GridView.builder(
-            padding: EdgeInsets.fromLTRB(AppSpacing.md, AppSpacing.md, AppSpacing.md, 96),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.md, AppSpacing.md, AppSpacing.md, 96),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: cols,
               mainAxisExtent: 116,

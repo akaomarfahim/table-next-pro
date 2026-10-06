@@ -231,7 +231,7 @@ return $default(_that.id,_that.customerId,_that.customerName,_that.customerPhone
 @JsonSerializable()
 
 class _ReservationModel extends ReservationModel {
-  const _ReservationModel({@JsonKey(includeToJson: false) this.id = '', required this.customerId, required this.customerName, required this.customerPhone, required this.partySize, @TimestampConverter() required this.startAt, @TimestampConverter() required this.endAt, required this.durationMinutes, final  List<String> tableIds = const <String>[], final  List<String> tableLabels = const <String>[], @JsonKey(unknownEnumValue: ReservationStatus.pending) this.status = ReservationStatus.confirmed, @JsonKey(unknownEnumValue: ReservationSource.other) this.source = ReservationSource.phone, @JsonKey(unknownEnumValue: ReservationOccasion.none) this.occasion = ReservationOccasion.none, this.notes = '', this.createdById = '', this.createdByName = '', this.billId, @NullableTimestampConverter() this.seatedAt, @NullableTimestampConverter() this.completedAt, @NullableTimestampConverter() this.cancelledAt, @NullableTimestampConverter() this.createdAt, @NullableTimestampConverter() this.updatedAt}): _tableIds = tableIds,_tableLabels = tableLabels,super._();
+  const _ReservationModel({@JsonKey(includeToJson: false) this.id = '', required this.customerId, required this.customerName, required this.customerPhone, required this.partySize, @TimestampConverter() required this.startAt, @TimestampConverter() required this.endAt, required this.durationMinutes, this.tableIds = const <String>[], this.tableLabels = const <String>[], @JsonKey(unknownEnumValue: ReservationStatus.pending) this.status = ReservationStatus.confirmed, @JsonKey(unknownEnumValue: ReservationSource.other) this.source = ReservationSource.phone, @JsonKey(unknownEnumValue: ReservationOccasion.none) this.occasion = ReservationOccasion.none, this.notes = '', this.createdById = '', this.createdByName = '', this.billId, @NullableTimestampConverter() this.seatedAt, @NullableTimestampConverter() this.completedAt, @NullableTimestampConverter() this.cancelledAt, @NullableTimestampConverter() this.createdAt, @NullableTimestampConverter() this.updatedAt}): super._();
   factory _ReservationModel.fromJson(Map<String, dynamic> json) => _$ReservationModelFromJson(json);
 
 @override@JsonKey(includeToJson: false) final  String id;
@@ -243,20 +243,8 @@ class _ReservationModel extends ReservationModel {
 /// Denormalised for range queries / readability in the console.
 @override@TimestampConverter() final  DateTime endAt;
 @override final  int durationMinutes;
- final  List<String> _tableIds;
-@override@JsonKey() List<String> get tableIds {
-  if (_tableIds is EqualUnmodifiableListView) return _tableIds;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_tableIds);
-}
-
- final  List<String> _tableLabels;
-@override@JsonKey() List<String> get tableLabels {
-  if (_tableLabels is EqualUnmodifiableListView) return _tableLabels;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_tableLabels);
-}
-
+@override@JsonKey() final  List<String> tableIds;
+@override@JsonKey() final  List<String> tableLabels;
 @override@JsonKey(unknownEnumValue: ReservationStatus.pending) final  ReservationStatus status;
 @override@JsonKey(unknownEnumValue: ReservationSource.other) final  ReservationSource source;
 @override@JsonKey(unknownEnumValue: ReservationOccasion.none) final  ReservationOccasion occasion;
@@ -283,12 +271,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReservationModel&&(identical(other.id, id) || other.id == id)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.customerName, customerName) || other.customerName == customerName)&&(identical(other.customerPhone, customerPhone) || other.customerPhone == customerPhone)&&(identical(other.partySize, partySize) || other.partySize == partySize)&&(identical(other.startAt, startAt) || other.startAt == startAt)&&(identical(other.endAt, endAt) || other.endAt == endAt)&&(identical(other.durationMinutes, durationMinutes) || other.durationMinutes == durationMinutes)&&const DeepCollectionEquality().equals(other._tableIds, _tableIds)&&const DeepCollectionEquality().equals(other._tableLabels, _tableLabels)&&(identical(other.status, status) || other.status == status)&&(identical(other.source, source) || other.source == source)&&(identical(other.occasion, occasion) || other.occasion == occasion)&&(identical(other.notes, notes) || other.notes == notes)&&(identical(other.createdById, createdById) || other.createdById == createdById)&&(identical(other.createdByName, createdByName) || other.createdByName == createdByName)&&(identical(other.billId, billId) || other.billId == billId)&&(identical(other.seatedAt, seatedAt) || other.seatedAt == seatedAt)&&(identical(other.completedAt, completedAt) || other.completedAt == completedAt)&&(identical(other.cancelledAt, cancelledAt) || other.cancelledAt == cancelledAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReservationModel&&(identical(other.id, id) || other.id == id)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&(identical(other.customerName, customerName) || other.customerName == customerName)&&(identical(other.customerPhone, customerPhone) || other.customerPhone == customerPhone)&&(identical(other.partySize, partySize) || other.partySize == partySize)&&(identical(other.startAt, startAt) || other.startAt == startAt)&&(identical(other.endAt, endAt) || other.endAt == endAt)&&(identical(other.durationMinutes, durationMinutes) || other.durationMinutes == durationMinutes)&&const DeepCollectionEquality().equals(other.tableIds, tableIds)&&const DeepCollectionEquality().equals(other.tableLabels, tableLabels)&&(identical(other.status, status) || other.status == status)&&(identical(other.source, source) || other.source == source)&&(identical(other.occasion, occasion) || other.occasion == occasion)&&(identical(other.notes, notes) || other.notes == notes)&&(identical(other.createdById, createdById) || other.createdById == createdById)&&(identical(other.createdByName, createdByName) || other.createdByName == createdByName)&&(identical(other.billId, billId) || other.billId == billId)&&(identical(other.seatedAt, seatedAt) || other.seatedAt == seatedAt)&&(identical(other.completedAt, completedAt) || other.completedAt == completedAt)&&(identical(other.cancelledAt, cancelledAt) || other.cancelledAt == cancelledAt)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,id,customerId,customerName,customerPhone,partySize,startAt,endAt,durationMinutes,const DeepCollectionEquality().hash(_tableIds),const DeepCollectionEquality().hash(_tableLabels),status,source,occasion,notes,createdById,createdByName,billId,seatedAt,completedAt,cancelledAt,createdAt,updatedAt]);
+int get hashCode => Object.hashAll([runtimeType,id,customerId,customerName,customerPhone,partySize,startAt,endAt,durationMinutes,const DeepCollectionEquality().hash(tableIds),const DeepCollectionEquality().hash(tableLabels),status,source,occasion,notes,createdById,createdByName,billId,seatedAt,completedAt,cancelledAt,createdAt,updatedAt]);
 
 @override
 String toString() {
@@ -330,8 +318,8 @@ as String,partySize: null == partySize ? _self.partySize : partySize // ignore: 
 as int,startAt: null == startAt ? _self.startAt : startAt // ignore: cast_nullable_to_non_nullable
 as DateTime,endAt: null == endAt ? _self.endAt : endAt // ignore: cast_nullable_to_non_nullable
 as DateTime,durationMinutes: null == durationMinutes ? _self.durationMinutes : durationMinutes // ignore: cast_nullable_to_non_nullable
-as int,tableIds: null == tableIds ? _self._tableIds : tableIds // ignore: cast_nullable_to_non_nullable
-as List<String>,tableLabels: null == tableLabels ? _self._tableLabels : tableLabels // ignore: cast_nullable_to_non_nullable
+as int,tableIds: null == tableIds ? _self.tableIds : tableIds // ignore: cast_nullable_to_non_nullable
+as List<String>,tableLabels: null == tableLabels ? _self.tableLabels : tableLabels // ignore: cast_nullable_to_non_nullable
 as List<String>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as ReservationStatus,source: null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
 as ReservationSource,occasion: null == occasion ? _self.occasion : occasion // ignore: cast_nullable_to_non_nullable

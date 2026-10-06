@@ -34,7 +34,7 @@ class InvoicePdfService {
     final doc = pw.Document(title: 'Bill ${bill.billNumber}', author: business.name);
     const small = pw.TextStyle(fontSize: 8);
     const normal = pw.TextStyle(fontSize: 9);
-    final bold = pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold);
+    const bold = pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold);
 
     pw.Widget row(String l, String r, {pw.TextStyle? style}) => pw.Padding(
           padding: const pw.EdgeInsets.symmetric(vertical: 1),
@@ -61,7 +61,7 @@ class InvoicePdfService {
             pw.Text(
               business.name,
               textAlign: pw.TextAlign.center,
-              style: pw.TextStyle(fontSize: 13, fontWeight: pw.FontWeight.bold),
+              style: const pw.TextStyle(fontSize: 13, fontWeight: pw.FontWeight.bold),
             ),
             if (business.address.isNotEmpty)
               pw.Text(business.address, textAlign: pw.TextAlign.center, style: small),
@@ -88,7 +88,7 @@ class InvoicePdfService {
               row('Service (${_pct(bill.serviceChargeRate)}%)', money(bill.totals.serviceCharge)),
             if (bill.totals.tax > 0) row('VAT (${_pct(bill.taxRate)}%)', money(bill.totals.tax)),
             pw.SizedBox(height: 2),
-            row('TOTAL', money(bill.totals.total), style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold)),
+            row('TOTAL', money(bill.totals.total), style: const pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold)),
             if (bill.payments.isNotEmpty) ...[
               divider(),
               for (final p in bill.payments) row(p.method.label, money(p.amount)),
