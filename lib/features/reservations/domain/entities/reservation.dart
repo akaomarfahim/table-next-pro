@@ -15,9 +15,7 @@ enum ReservationStatus {
 
   /// Statuses that hold the table.
   bool get isActive =>
-      this == ReservationStatus.pending ||
-      this == ReservationStatus.confirmed ||
-      this == ReservationStatus.seated;
+      this == ReservationStatus.pending || this == ReservationStatus.confirmed || this == ReservationStatus.seated;
 
   bool get isFinal => !isActive;
 }
@@ -78,8 +76,7 @@ abstract class Reservation with _$Reservation {
 
   String get tablesLabel => tableLabels.isEmpty ? 'No table' : tableLabels.join(', ');
 
-  bool overlaps(DateTime start, DateTime end) =>
-      startAt.isBefore(end) && start.isBefore(endAt);
+  bool overlaps(DateTime start, DateTime end) => startAt.isBefore(end) && start.isBefore(endAt);
 
   bool get isLate =>
       (status == ReservationStatus.pending || status == ReservationStatus.confirmed) &&

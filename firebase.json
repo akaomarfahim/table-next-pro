@@ -1,1 +1,45 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"table-next-pro","appId":"1:240925805327:android:adf3ed840ed97dd8434c7a","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"table-next-pro","appId":"1:240925805327:ios:27447cb953af5bfa434c7a","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"macos":{"default":{"projectId":"table-next-pro","appId":"1:240925805327:ios:27447cb953af5bfa434c7a","uploadDebugSymbols":false,"fileOutput":"macos/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"table-next-pro","configurations":{"android":"1:240925805327:android:adf3ed840ed97dd8434c7a","ios":"1:240925805327:ios:27447cb953af5bfa434c7a","macos":"1:240925805327:ios:27447cb953af5bfa434c7a","web":"1:240925805327:web:da3b86f3fc3574c2434c7a","windows":"1:240925805327:web:bd82ffeadb34c23b434c7a"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "table-next-pro",
+          "appId": "1:240925805327:android:adf3ed840ed97dd8434c7a",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "table-next-pro",
+          "appId": "1:240925805327:ios:27447cb953af5bfa434c7a",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "table-next-pro",
+          "appId": "1:240925805327:ios:27447cb953af5bfa434c7a",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "table-next-pro",
+          "configurations": {
+            "android": "1:240925805327:android:adf3ed840ed97dd8434c7a",
+            "ios": "1:240925805327:ios:27447cb953af5bfa434c7a",
+            "macos": "1:240925805327:ios:27447cb953af5bfa434c7a",
+            "web": "1:240925805327:web:da3b86f3fc3574c2434c7a",
+            "windows": "1:240925805327:web:bd82ffeadb34c23b434c7a"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}
