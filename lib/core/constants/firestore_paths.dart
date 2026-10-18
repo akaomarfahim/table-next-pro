@@ -21,22 +21,15 @@ abstract final class FirestorePaths {
 
   static String business(String businessId) => '$businesses/$businessId';
 
-  static String customers(String businessId) =>
-      '${business(businessId)}/customers';
-  static String reservations(String businessId) =>
-      '${business(businessId)}/reservations';
+  static String customers(String businessId) => '${business(businessId)}/customers';
+  static String reservations(String businessId) => '${business(businessId)}/reservations';
   static String floors(String businessId) => '${business(businessId)}/floors';
-  static String floorElements(String businessId) =>
-      '${business(businessId)}/floor_elements';
-  static String menuCategories(String businessId) =>
-      '${business(businessId)}/menu_categories';
-  static String menuItems(String businessId) =>
-      '${business(businessId)}/menu_items';
+  static String floorElements(String businessId) => '${business(businessId)}/floor_elements';
+  static String menuCategories(String businessId) => '${business(businessId)}/menu_categories';
+  static String menuItems(String businessId) => '${business(businessId)}/menu_items';
   static String bills(String businessId) => '${business(businessId)}/bills';
-  static String dailyStats(String businessId) =>
-      '${business(businessId)}/daily_stats';
-  static String counters(String businessId) =>
-      '${business(businessId)}/counters';
+  static String dailyStats(String businessId) => '${business(businessId)}/daily_stats';
+  static String counters(String businessId) => '${business(businessId)}/counters';
 
   static String billCounter(String businessId) => '${counters(businessId)}/bills';
 }

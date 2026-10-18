@@ -28,12 +28,8 @@ import 'app_routes.dart';
 
 part 'app_router.g.dart';
 
-final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>(
-  debugLabel: 'root',
-);
-final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
-  debugLabel: 'shell',
-);
+final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
+final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
 
 /// Notifies GoRouter to re-run redirects when the session *kind* changes.
 class _RouterRefresh extends ChangeNotifier {
@@ -44,9 +40,7 @@ class _RouterRefresh extends ChangeNotifier {
 GoRouter appRouter(Ref ref) {
   final refresh = _RouterRefresh();
   ref.listen(
-    sessionControllerProvider.select(
-      (s) => (s.isLoading && !s.hasValue, s.hasError, s.value.runtimeType),
-    ),
+    sessionControllerProvider.select((s) => (s.isLoading && !s.hasValue, s.hasError, s.value.runtimeType)),
     (_, _) => refresh.refresh(),
   );
 
@@ -66,16 +60,11 @@ GoRouter appRouter(Ref ref) {
       final value = session.requireValue;
       switch (value) {
         case SessionNeedsActivation():
-          return AppRoutes.publicRoutes.contains(location)
-              ? null
-              : AppRoutes.activate;
+          return AppRoutes.publicRoutes.contains(location) ? null : AppRoutes.activate;
         case SessionLocked():
           if (location == AppRoutes.lock) return null;
           final from = _isAppRoute(location) ? state.uri.toString() : null;
-          return Uri(
-            path: AppRoutes.lock,
-            queryParameters: from == null ? null : {'from': from},
-          ).toString();
+          return Uri(path: AppRoutes.lock, queryParameters: from == null ? null : {'from': from}).toString();
         case SessionUnlocked():
           if (!_isAppRoute(location)) {
             final from = state.uri.queryParameters['from'];
@@ -85,18 +74,9 @@ GoRouter appRouter(Ref ref) {
       }
     },
     routes: [
-      GoRoute(
-        path: AppRoutes.splash,
-        builder: (context, state) => const SplashScreen(),
-      ),
-      GoRoute(
-        path: AppRoutes.activate,
-        builder: (context, state) => const ActivationScreen(),
-      ),
-      GoRoute(
-        path: AppRoutes.setup,
-        builder: (context, state) => const BusinessSetupScreen(),
-      ),
+      GoRoute(path: AppRoutes.splash, builder: (context, state) => const SplashScreen()),
+      GoRoute(path: AppRoutes.activate, builder: (context, state) => const ActivationScreen()),
+      GoRoute(path: AppRoutes.setup, builder: (context, state) => const BusinessSetupScreen()),
       GoRoute(
         path: AppRoutes.lock,
         pageBuilder: (context, state) => const NoTransitionPage(child: LockScreen()),
@@ -112,18 +92,15 @@ GoRouter appRouter(Ref ref) {
         routes: [
           GoRoute(
             path: AppRoutes.dashboard,
-            pageBuilder: (context, state) =>
-                const NoTransitionPage(child: DashboardScreen()),
+            pageBuilder: (context, state) => const NoTransitionPage(child: DashboardScreen()),
           ),
           GoRoute(
             path: AppRoutes.floor,
-            pageBuilder: (context, state) =>
-                const NoTransitionPage(child: FloorViewScreen()),
+            pageBuilder: (context, state) => const NoTransitionPage(child: FloorViewScreen()),
           ),
           GoRoute(
             path: AppRoutes.reservations,
-            pageBuilder: (context, state) =>
-                const NoTransitionPage(child: ReservationsScreen()),
+            pageBuilder: (context, state) => const NoTransitionPage(child: ReservationsScreen()),
             routes: [
               GoRoute(
                 path: 'new',
@@ -138,55 +115,40 @@ GoRouter appRouter(Ref ref) {
               ),
               GoRoute(
                 path: ':id',
-                builder: (context, state) => ReservationFormScreen(
-                  reservationId: state.pathParameters['id'],
-                ),
+                builder: (context, state) => ReservationFormScreen(reservationId: state.pathParameters['id']),
               ),
             ],
           ),
           GoRoute(
             path: AppRoutes.customers,
-            pageBuilder: (context, state) =>
-                const NoTransitionPage(child: CustomersScreen()),
+            pageBuilder: (context, state) => const NoTransitionPage(child: CustomersScreen()),
             routes: [
               GoRoute(
                 path: ':id',
-                builder: (context, state) => CustomerDetailScreen(
-                  customerId: state.pathParameters['id']!,
-                ),
+                builder: (context, state) => CustomerDetailScreen(customerId: state.pathParameters['id']!),
               ),
             ],
           ),
           GoRoute(
             path: AppRoutes.billing,
-            pageBuilder: (context, state) =>
-                const NoTransitionPage(child: BillingScreen()),
+            pageBuilder: (context, state) => const NoTransitionPage(child: BillingScreen()),
             routes: [
               GoRoute(
                 path: ':id',
-                builder: (context, state) =>
-                    BillScreen(billId: state.pathParameters['id']!),
+                builder: (context, state) => BillScreen(billId: state.pathParameters['id']!),
               ),
             ],
           ),
           GoRoute(
             path: AppRoutes.menu,
-            pageBuilder: (context, state) =>
-                const NoTransitionPage(child: MenuScreen()),
+            pageBuilder: (context, state) => const NoTransitionPage(child: MenuScreen()),
           ),
           GoRoute(
             path: AppRoutes.settings,
-            pageBuilder: (context, state) =>
-                const NoTransitionPage(child: SettingsScreen()),
+            pageBuilder: (context, state) => const NoTransitionPage(child: SettingsScreen()),
             routes: [
-              GoRoute(
-                path: 'business',
-                builder: (context, state) => const BusinessProfileScreen(),
-              ),
-              GoRoute(
-                path: 'staff',
-                builder: (context, state) => const StaffScreen(),
-              ),
+              GoRoute(path: 'business', builder: (context, state) => const BusinessProfileScreen()),
+              GoRoute(path: 'staff', builder: (context, state) => const StaffScreen()),
               GoRoute(
                 path: 'logs',
                 parentNavigatorKey: rootNavigatorKey,
@@ -207,6 +169,4 @@ GoRouter appRouter(Ref ref) {
 }
 
 bool _isAppRoute(String location) =>
-    location != AppRoutes.splash &&
-    location != AppRoutes.lock &&
-    !AppRoutes.publicRoutes.contains(location);
+    location != AppRoutes.splash && location != AppRoutes.lock && !AppRoutes.publicRoutes.contains(location);
